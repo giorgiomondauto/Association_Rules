@@ -1,31 +1,6 @@
 chronic_disease=asheville_ass_rules$asheville.ICDCode3
 freq=sort(table(chronic_disease),decreasing=T)
-# 401 High Blood Pressure
-# 272 Metabolism Disorder
-# 300 Anxiety
-# 296 Mood Disorder
-# 462 throat pain
-# 530 Disease of esophagus
-# 477 Allergic rhinitis (related to nose)
-# 305 Nondependend abuse of drugs
-# 715 Osteoarthrosis
-# 461 Acute sinusitis
-# 244 Acquired Hypothyrodism
-# 309 Adjustment Reaction
-# 366 cataract
-# 278 abnormal weight
-# 268 vitamin of defiency
-# 493 asthma
-# 250 Diabetes
-# 722 Intervertebral disc disorders
-# 626 disorders of menstruation
-# 627 Menopausa
-# 327 organic sleep disorder
-# 314 hyperkinetic syndrome of cildhood
-# 427 cardiac dysrhythimias  ---> heart disease
-# 721 spondylosis and allied disorders
-# 473 chronic sinusitis
-# 346 migraine
+
 
 library(data.table)
 
@@ -52,8 +27,7 @@ x <- list()
 for(i in 1:8325) {
 
   da1=c(sankey_female[sankey_female$asheville.MBR_PTY_ID == sankey_female$uniqueid[i],4])
-  x[[i]] <- da1
-  
+  x[[i]] <- da1 
 }
 rules_b_female <- apriori(x, parameter = list(supp = 0.05, conf = 0.05, target = "rules"))
 outcome_female=as(rules_b_female,'data.frame')
